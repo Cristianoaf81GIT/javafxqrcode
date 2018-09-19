@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.profcristianoaf81</groupId>
+    <artifactId>JavaFXAppQRCode</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+     <repositories>
+            
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+ 
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.kenglxn.qrgen</groupId>
+            <artifactId>javase</artifactId>
+            <version>2.5.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>1.5-beta1</version>
+        </dependency>
+
+    </dependencies>
+    
+    <!--Define construção do projeto!-->
+    <build>
+    <plugins>
+      <!-- Constroi executavel java -->  
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.1.0</version>
+       
+        <configuration>
+          <outputDirectory>${endorsed.dir}</outputDirectory>  
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+              <mainClass>
+                  com.profcristianoaf81.javafxappqrcode.Janela
+              </mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+              
+      </plugin>
+      
+     <!-- inclue dependencias do projeto no jar!-->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        
+        <configuration>
+            <archive>
+            <manifest>
+            <mainClass>com.profcristianoaf81.javafxappqrcode.Janela</mainClass>
+            </manifest>
+            </archive>
+            <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+            </descriptorRefs>
+        </configuration>
+       
+      </plugin>
+      <!-- 
+        comando para mavem compilar tudo :
+        mvn clean compile assembly:single
+        necessário recompilar tudo via cmd windows
+        ou terminal linux
+      !-->
+
+    </plugins>
+  </build>
+
+</project>
